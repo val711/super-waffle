@@ -90,7 +90,7 @@ def authenticate!
     end
   else
     begin
-      @customer = Stripe::Customer.create(:description => "iOS SDK example customer")
+      @customer = Stripe::Customer.create(:description => "Ted Berslay Salon")
     rescue Stripe::InvalidRequestError
     end
     session[:customer_id] = @customer.id
@@ -107,7 +107,7 @@ post '/charge_card' do
   begin
     charge = Stripe::Charge.create(
       :amount => params[:amount], # this number should be in cents
-      :currency => "usd",
+      :currency => "eur",
       :card => token,
       :description => "Example Charge"
     )
